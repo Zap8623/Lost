@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck40k1rmwonhi"]
+
+[ext_resource type="Script" path="res://options_menu.gd" id="1_yuejb"]
+[ext_resource type="Texture2D" uid="uid://f50pnm086nnn" path="res://watercolor-halloween-house-illustration_79603-2041.jpg" id="2_cnu6o"]
+[ext_resource type="AudioStream" uid="uid://dvn1cmnbl1e84" path="res://sound/mixkit-cool-interface-click-tone-2568.wav" id="3_ewdvl"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yuejb")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 647.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "W,A,S,D or arrow keys:  Move
+F : flashlight
+Ctrl : crounch
+E: interact"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(579, 324)
+scale = Vector2(3.4142, 1.89349)
+texture = ExtResource("2_cnu6o")
+
+[node name="click2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ewdvl")
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

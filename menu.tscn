@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://cw7xq57mcg314"]
+
+[ext_resource type="Script" path="res://Menu.gd" id="1_4goas"]
+[ext_resource type="Texture2D" uid="uid://f50pnm086nnn" path="res://watercolor-halloween-house-illustration_79603-2041.jpg" id="2_mw4nk"]
+[ext_resource type="AudioStream" uid="uid://dvn1cmnbl1e84" path="res://sound/mixkit-cool-interface-click-tone-2568.wav" id="3_vs656"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76bbw"]
+bg_color = Color(0.74902, 0.560784, 0.321569, 1)
+border_width_bottom = 5
+border_color = Color(0.192157, 0.176471, 0.0431373, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id="Theme_vx7j3"]
+Button/styles/normal = SubResource("StyleBoxFlat_76bbw")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_vx7j3")
+script = ExtResource("1_4goas")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_top = 253.0
+offset_right = 1151.0
+offset_bottom = 354.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Option" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Option"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(577, 323)
+scale = Vector2(3.40237, 1.89941)
+texture = ExtResource("2_mw4nk")
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vs656")
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Option" to="." method="_on_option_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Option" to="." method="_on_option_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

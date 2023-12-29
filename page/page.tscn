@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfjh40sccfsso"]
+
+[ext_resource type="Script" path="res://page/CollisionShape3D.gd" id="1_nc0l6"]
+[ext_resource type="Script" path="res://page/page.gd" id="1_op2ux"]
+[ext_resource type="AudioStream" uid="uid://b3klxw3m54dny" path="res://sound/papercollect.mp3" id="3_6klrk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xu784"]
+size = Vector3(0.3, 0.4, 0.01)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_25jkf"]
+size = Vector3(0.37, 0.522, 0.032)
+
+[node name="Page" type="Area3D" groups=["Pages"]]
+script = ExtResource("1_op2ux")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_xu784")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0115662, 0.0136719, -0.0135727)
+shape = SubResource("BoxShape3D_25jkf")
+script = ExtResource("1_nc0l6")
+
+[node name="paper_collect_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6klrk")

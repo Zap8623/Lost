@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7uuxq1jylsfl"]
+
+[ext_resource type="AudioStream" uid="uid://co185cd2ftb8y" path="res://sound/mixkit-creepy-tomb-ambience-2500.wav" id="1_42xom"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_42xom")
+autoplay = true
